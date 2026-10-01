@@ -2,11 +2,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { SITE, STATS, IMAGES, PROGRAMS } from "@/lib/site";
+import { SITE, STATS, IMAGES, PROGRAMS, REAL_PHOTOS } from "@/lib/site";
 import { SectionTitle } from "@/components/ui";
 import { AnimatedCounter, Reveal } from "@/components/animated";
 import { Particles } from "@/components/chrome";
-import { TestimonialSlider, GalleryGrid, ProgramCard, ImpactStats, Newsletter } from "@/components/sections";
+import { TestimonialSlider, GalleryGrid, ProgramCard, ImpactStats, Newsletter, RealStrip } from "@/components/sections";
 
 export default function HomePage() {
   return (
@@ -50,12 +50,11 @@ export default function HomePage() {
             {/* Mobile hero image — visible only on phones */}
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 }} className="lg:hidden mt-6">
               <div className="glass rounded-3xl p-2 premium-shadow">
-                <div className="relative h-56 sm:h-72 overflow-hidden rounded-2xl">
-                  <Image src={IMAGES.heroClass} alt="Smart classroom in Kaimur" fill className="object-cover" sizes="100vw" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#041a3f]/75 to-transparent" />
+                <div className="relative overflow-hidden rounded-2xl">
+                  <Image src={REAL_PHOTOS[1].src} alt="Kalam Kranti certificate ceremony — real photo" width={REAL_PHOTOS[1].w} height={REAL_PHOTOS[1].h} className="h-auto w-full" sizes="100vw" priority={false} />
                   <div className="absolute bottom-3 left-3 right-3 glass rounded-xl px-3.5 py-2.5 text-left">
-                    <p className="text-[13px] font-bold text-[#041a3f]">📚 Live: Evening Pathshala, Nuaon</p>
-                    <p className="text-[11px] text-slate-600">240 children • Smart board • Free books</p>
+                    <p className="text-[13px] font-bold text-[#041a3f]">📍 Real: Certificate Samman, Nuaon</p>
+                    <p className="text-[11px] text-slate-600">Kalam Kranti ki asli tasveer</p>
                   </div>
                 </div>
               </div>
@@ -83,12 +82,11 @@ export default function HomePage() {
 
           <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.9 }} className="hidden lg:block relative">
             <div className="glass rounded-[2rem] p-3 premium-shadow rotate-2">
-              <div className="relative h-[480px] overflow-hidden rounded-[1.6rem]">
-                <Image src={IMAGES.heroClass} alt="Smart classroom" fill className="object-cover" sizes="50vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#041a3f]/70 to-transparent" />
+              <div className="relative overflow-hidden rounded-[1.6rem]">
+                <Image src={REAL_PHOTOS[3].src} alt="Children with Kalam Kranti certificates, medals and school bags — real photo" width={REAL_PHOTOS[3].w} height={REAL_PHOTOS[3].h} className="h-auto w-full" sizes="50vw" />
                 <div className="absolute bottom-5 left-5 right-5 glass rounded-2xl p-4">
-                  <p className="text-sm font-bold text-[#041a3f]">📚 Live: Evening Pathshala, Nuaon</p>
-                  <p className="text-xs text-slate-600">240 children • Smart board • Free books</p>
+                  <p className="text-sm font-bold text-[#041a3f]">📍 Real: Medal + Certificate + School Bag Vitran</p>
+                  <p className="text-xs text-slate-600">Kalam Kranti Education Foundation, Kaimur</p>
                 </div>
               </div>
             </div>
@@ -220,6 +218,20 @@ export default function HomePage() {
           <GalleryGrid limit={6} />
           <div className="mt-8 text-center">
             <Link href="/gallery" className="inline-block rounded-full border-2 border-[#041a3f] px-8 py-3 font-bold text-[#041a3f] hover:bg-[#041a3f] hover:text-white transition">View full gallery →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* REAL MOMENTS */}
+      <section className="relative overflow-hidden bg-[#041a3f] py-16 sm:py-20">
+        <div className="absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-[#D4AF37]/15 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+          <SectionTitle dark eyebrow="📍 100% Real Photos" title={<>Zameen par <span className="gold-gradient-text">asli kaam</span></>} hindi="ये स्टॉक फोटो नहीं — हमारे गाँव की असली तस्वीरें हैं" desc="Certificate, books, school bags aur trophies — swipe karke dekho. Koi photo kati nahi, sab poori dikhengi." />
+        </div>
+        <div className="relative mx-auto max-w-7xl sm:px-6">
+          <RealStrip />
+          <div className="mt-6 text-center px-4">
+            <Link href="/gallery" className="inline-block rounded-full bg-[#D4AF37] px-8 py-3.5 min-h-[52px] font-bold text-[#041a3f] hover:scale-105 transition">Saari Real Photos Dekho →</Link>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { IMAGES, SITE } from "@/lib/site";
+import { SITE, REAL_PHOTOS } from "@/lib/site";
 import { SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/animated";
 
@@ -20,8 +20,9 @@ export default function VolunteerPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 grid lg:grid-cols-2 gap-10">
           <Reveal>
             <div className="relative">
-              <div className="relative h-[300px] overflow-hidden rounded-3xl premium-shadow">
-                <Image src={IMAGES.volunteers} alt="Volunteers" fill className="object-cover" sizes="50vw" />
+              <div className="overflow-hidden rounded-3xl premium-shadow bg-white">
+                <Image src={REAL_PHOTOS[7].src} alt="Kalam Kranti team on stage — real photo" width={REAL_PHOTOS[7].w} height={REAL_PHOTOS[7].h} className="h-auto w-full" sizes="(max-width:1024px) 100vw, 50vw" />
+                <p className="px-4 py-2.5 text-xs font-bold text-slate-600">📍 Real: Hamari Team — Kaimur</p>
               </div>
               <div className="glass rounded-3xl p-6 mt-5 premium-shadow">
                 <h3 className="font-display font-bold text-[#041a3f] text-lg">Why volunteer with us?</h3>
@@ -35,8 +36,9 @@ export default function VolunteerPage() {
                   📞 Questions? WhatsApp us — <b className="text-[#f5d76e]">{SITE.phone}</b>
                 </div>
               </div>
-              <div className="relative h-[220px] overflow-hidden rounded-3xl mt-5 premium-shadow">
-                <Image src={IMAGES.volunteerGroup} alt="Group" fill className="object-cover" sizes="50vw" />
+              <div className="overflow-hidden rounded-3xl mt-5 premium-shadow bg-white">
+                <Image src={REAL_PHOTOS[8].src} alt="Village night meeting with children — real photo" width={REAL_PHOTOS[8].w} height={REAL_PHOTOS[8].h} className="h-auto w-full" sizes="(max-width:1024px) 100vw, 50vw" loading="lazy" />
+                <p className="px-4 py-2.5 text-xs font-bold text-slate-600">📍 Real: Gaon Chaupal — Night Meeting</p>
               </div>
             </div>
           </Reveal>

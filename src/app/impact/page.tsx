@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { IMAGES, TESTIMONIALS } from "@/lib/site";
+import { REAL_PHOTOS } from "@/lib/site";
 import { SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/animated";
 import { ImpactStats, TestimonialSlider } from "@/components/sections";
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const STORIES = [
-  { img: IMAGES.girlRead, name: "Priya — NEET Aspirant", tag: "Scholarship", d: "From a thatched roof in Bhabhua to NEET coaching in Patna on full scholarship. Mock score: 640/720." },
-  { img: IMAGES.laptopKids, name: "Nuaon Smart Centre", tag: "Digital", d: "40 first-time computer users now code in Scratch & type 30 wpm. 3 won district science fair." },
-  { img: IMAGES.library, name: "Chainpur Library", tag: "Library", d: "500 villagers borrow books weekly. Evening readers club raised Class 10 avg from 58% → 81%." },
+  { img: REAL_PHOTOS[1], name: "Certificate Samman — Nuaon", tag: "Samman", d: "Har saal sekdon bachchon ko manch se certificate aur medal — padhai ki jeet ka jashn, poore gaon ke saamne." },
+  { img: REAL_PHOTOS[8], name: "Gaon Chaupal — Night Meeting", tag: "Rural", d: "Raat me gaon-chaupal: parents aur bachchon ke saath shiksha par charcha — yahi hai asli grassroots kaam." },
+  { img: REAL_PHOTOS[10], name: "NCC Cadets Samman", tag: "Youth", d: "Anushasan aur netritva: NCC cadets ka samman samaroh — hamare yuva hi kal ka Bihar banayenge." },
 ];
 
 export default function ImpactPage() {
@@ -55,8 +55,13 @@ export default function ImpactPage() {
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="relative h-[420px] overflow-hidden rounded-3xl">
-                <Image src={IMAGES.heroHands} alt="Impact" fill className="object-cover" sizes="50vw" />
+              <div className="overflow-hidden rounded-3xl bg-white premium-shadow">
+                <Image src={REAL_PHOTOS[3].src} alt="Children holding Kalam Kranti certificates and medals — real photo" width={REAL_PHOTOS[3].w} height={REAL_PHOTOS[3].h} className="h-auto w-full" sizes="(max-width:1024px) 100vw, 50vw" />
+                <div className="flex flex-wrap gap-2.5 p-4">
+                  <span className="rounded-full bg-[#041a3f] px-4 py-2 text-xs font-bold text-white">Before: 41% dropout</span>
+                  <span className="rounded-full bg-[#D4AF37] px-4 py-2 text-xs font-bold text-[#041a3f]">After: 96% pass ✓</span>
+                  <span className="rounded-full bg-green-100 px-4 py-2 text-xs font-bold text-green-800">📍 Real photo</span>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -70,7 +75,7 @@ export default function ImpactPage() {
             {STORIES.map((s, i) => (
               <Reveal key={s.name} delay={i * 0.08}>
                 <div className="card-hover overflow-hidden rounded-3xl bg-white premium-shadow">
-                  <div className="relative h-56"><Image src={s.img} alt={s.name} fill className="object-cover" sizes="33vw" /></div>
+                  <Image src={s.img.src} alt={s.name} width={s.img.w} height={s.img.h} sizes="(max-width:768px) 100vw, 33vw" loading="lazy" className="h-auto w-full" />
                   <div className="p-6">
                     <span className="rounded-full bg-[#D4AF37]/15 px-3 py-1 text-[11px] font-bold text-[#a8841c] uppercase">{s.tag}</span>
                     <h3 className="font-display mt-2 font-bold text-[#041a3f]">{s.name}</h3>

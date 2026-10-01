@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { TESTIMONIALS, GALLERY, PROGRAMS, SITE } from "@/lib/site";
+import { TESTIMONIALS, GALLERY, PROGRAMS, SITE, REAL_PHOTOS } from "@/lib/site";
 import { AnimatedCounter } from "./animated";
 
 export function TestimonialSlider() {
@@ -82,8 +82,76 @@ export function GalleryGrid({ limit }: { limit?: number }) {
   );
 }
 
-export function ProgramCard({ p, idx }: { p: (typeof PROGRAMS)[number]; idx: number }) {
+/* Real field photos — ALWAYS shown in full, never cropped (natural aspect ratio) */
+export function RealGallery({ items = REAL_PHOTOS }: { items?: typeof REAL_PHOTOS }) {
+  const [light, setLight] = useState<string | null>(null);
   return (
+    <>
+      <div className="masonry">
+        {items.map((g) => (
+          <motion.button
+            key={g.src}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5 }}
+            onClick={() => setLight(g.src)}
+            className="group relative block w-full overflow-hidden rounded-2xl premium-shadow text-left active:scale-[0.98] transition bg-white"
+          >
+            <Image
+              src={g.src}
+              alt={g.title}
+              width={g.w}
+              height={g.h}
+              sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+              loading="lazy"
+              className="h-auto w-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#041a3f]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300" />
+            <div className="absolute bottom-0 inset-x-0 p-4 translate-y-1 group-hover:translate-y-0 transition duration-300">
+              <span className="rounded-full bg-[#D4AF37] px-3 py-0.5 text-[11px] font-bold text-[#041a3f]">📍 Real • {g.cat}</span>
+              <p className="mt-1.5 font-display font-bold text-white drop-shadow">{g.title}</p>
+            </div>
+          </motion.button>
+        ))}
+      </div>
+      <AnimatePresence>
+        {light && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setLight(null)} className="fixed inset-0 z-[95] flex items-end sm:items-center justify-center bg-black/85 backdrop-blur">
+            <motion.div initial={{ y: 40, scale: 0.97 }} animate={{ y: 0, scale: 1 }} exit={{ y: 40, scale: 0.97 }} className="relative w-full sm:w-auto sm:max-w-4xl" onClick={(e) => e.stopPropagation()}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={light} alt="Full photo" className="max-h-[82vh] w-full sm:w-auto sm:max-w-4xl mx-auto object-contain sm:rounded-3xl rounded-t-3xl bg-black" />
+              <button onClick={() => setLight(null)} className="absolute top-4 right-4 rounded-full bg-white px-5 py-2.5 text-sm font-bold min-h-[44px]" aria-label="Close">✕ Close</button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+/* Horizontal swipe strip of real photos — full image, no cropping */
+export function RealStrip() {
+  return (
+    <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-5 sm:px-0">
+      {REAL_PHOTOS.map((g) => (
+        <figure key={g.src} className="snap-center shrink-0 overflow-hidden rounded-2xl premium-shadow bg-white/10 border border-white/15">
+          <Image
+            src={g.src}
+            alt={g.title}
+            width={g.w}
+            height={g.h}
+            loading="lazy"
+            className="h-52 sm:h-72 w-auto max-w-[78vw] sm:max-w-none object-contain bg-[#041a3f]"
+          />
+          <figcaption className="px-3 py-2 text-[11px] sm:text-xs font-bold text-blue-100 whitespace-nowrap">📍 {g.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+export function ProgramCard({ p, idx }: { p: (typeof PROGRAMS)[number]; idx: number }) {  return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}

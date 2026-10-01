@@ -170,3 +170,18 @@ export const GALLERY = [
   { src: IMAGES.aboutClass, title: "Study Time", cat: "Learning" },
   { src: IMAGES.classroomEmpty, title: "Smart Classroom", cat: "Classroom" },
 ];
+
+// Real field photos of the foundation (local files, shown WITHOUT cropping)
+export const REAL_PHOTOS = [
+  { src: "/images/real-01-cert-girl-yellow.jpg", title: "Certificate Samman — Nuaon", cat: "Samman", w: 1200, h: 1600 },
+  { src: "/images/real-02-cert-girl-pink.jpg", title: "Beti ko Certificate", cat: "Beti Padhao", w: 1599, h: 906 },
+  { src: "/images/real-03-book-girl-green.jpg", title: "Free Exam Guide Vitran", cat: "Books", w: 1599, h: 906 },
+  { src: "/images/real-04-group-certificates.jpg", title: "Medal, Certificate aur School Bag", cat: "Samman", w: 1599, h: 1200 },
+  { src: "/images/real-05-bag-distribution.jpg", title: "School Bag Vitran", cat: "Seva", w: 481, h: 272 },
+  { src: "/images/real-06-trophy-girl-stage.jpg", title: "Manch par Trophy Samman", cat: "Samman", w: 481, h: 430 },
+  { src: "/images/real-07-book-boy-outdoor.jpg", title: "Gaon me Book Vitran", cat: "Seva", w: 481, h: 433 },
+  { src: "/images/real-08-team-stage.jpg", title: "Hamari Team — Kaimur", cat: "Team", w: 481, h: 323 },
+  { src: "/images/real-09-village-night.jpg", title: "Gaon Chaupal — Night Meeting", cat: "Gaon", w: 1600, h: 900 },
+  { src: "/images/real-10-village-night-wide.jpg", title: "Gaon ke Bachche", cat: "Gaon", w: 481, h: 267 },
+  { src: "/images/real-11-ncc-award.jpg", title: "NCC Cadets Samman", cat: "Samman", w: 1600, h: 718 },
+];

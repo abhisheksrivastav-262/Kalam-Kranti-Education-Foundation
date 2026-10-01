@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { SITE, IMAGES } from "@/lib/site";
+import { SITE, IMAGES, REAL_PHOTOS } from "@/lib/site";
 import { SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/animated";
+import { RealGallery } from "@/components/sections";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -44,11 +45,9 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-64 overflow-hidden rounded-3xl premium-shadow"><Image src={IMAGES.classroomKids} alt="Kids" fill className="object-cover" sizes="40vw" /></div>
-              <div className="relative h-64 overflow-hidden rounded-3xl premium-shadow mt-8"><Image src={IMAGES.girlStudy} alt="Girl study" fill className="object-cover" sizes="40vw" /></div>
-              <div className="relative h-56 overflow-hidden rounded-3xl premium-shadow -mt-4"><Image src={IMAGES.library} alt="Library" fill className="object-cover" sizes="40vw" /></div>
-              <div className="relative h-56 overflow-hidden rounded-3xl premium-shadow mt-4"><Image src={IMAGES.digitalLearn} alt="Digital" fill className="object-cover" sizes="40vw" /></div>
+            <div>
+              <p className="mb-4 inline-block rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-[#a8841c]">📍 Hamari Asli Tasveeren — tap karke poori dekho</p>
+              <RealGallery items={[REAL_PHOTOS[0], REAL_PHOTOS[3], REAL_PHOTOS[5], REAL_PHOTOS[6]]} />
             </div>
           </Reveal>
         </div>
