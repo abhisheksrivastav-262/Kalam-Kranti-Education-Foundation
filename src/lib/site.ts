@@ -32,31 +32,27 @@ export const STATS = [
   { value: 8, suffix: "", label: "Education Programs", hindi: "शिक्षा कार्यक्रम" },
 ];
 
-const img = (id: string, w = 1200) =>
-  `https://images.unsplash.com/${id}?q=80&w=${w}&auto=format&fit=crop`;
-
+// All stock images saved locally in public/images/ — never break, load fast
 export const IMAGES = {
-  heroMain: img("photo-1497633762265-9d179a990aa6", 1600),
-  heroClass: img("photo-1509062522246-3755977927d7", 1200),
-  heroHands: img("photo-1427504494785-3a9ca7044f45", 1200),
-  aboutClass: img("photo-1503676260728-1c00da094a0b", 1200),
-  childrenSmile: img("photo-1488521787991-ed7bbaae773c", 1200),
-  classroomEmpty: img("photo-1580582932707-520aed937b7b", 1200),
-  girlStudy: img("photo-1544717305-2782549b5136", 1200),
-  girlRead: img("photo-1544717302-de2939b7ef71", 1000),
-  graduation: img("photo-1523050854058-8df90110c9f1", 1200),
-  library: img("photo-1521587760476-6c12a4b040da", 1200),
-  laptopKids: img("photo-1517486808906-6ca8b3f04846", 1200),
-  onlineLearn: img("photo-1588072432836-e100a13950d0", 1200),
-  digitalLearn: img("photo-1516321318423-f06f85e504b3", 1200),
-  lecture: img("photo-1524178232363-1fb2b075b655", 1200),
-  volunteers: img("photo-1559027615-cd4628902d4a", 1200),
-  volunteerGroup: img("photo-1469571486292-0bd49a398aef", 1200),
-  helping: img("photo-1532629345429-ff61509669c9", 1200),
-  campus: img("photo-1541339907198-e08756dedf3f", 1200),
-  caps: img("photo-1571260899304-425eee4c7efc", 1200),
-  classroomKids: img("photo-1577896851231-70ef18881754", 1200),
-  teacherBoard: img("photo-1577896852618-01da1dd79f7e", 1200),
+  heroMain: "/images/stock-hero-books.jpg",
+  heroHands: "/images/stock-hands-up.jpg",
+  aboutClass: "/images/stock-study-writing.jpg",
+  childrenSmile: "/images/stock-children-smile.jpg",
+  classroomEmpty: "/images/stock-classroom-empty.jpg",
+  girlStudy: "/images/stock-girls-smile.jpg",
+  girlRead: "/images/stock-girl-read.jpg",
+  graduation: "/images/stock-ceremony-hall.jpg",
+  library: "/images/stock-library.jpg",
+  laptopKids: "/images/stock-laptop-kids.jpg",
+  onlineLearn: "/images/stock-study-desk.jpg",
+  digitalLearn: "/images/stock-computer-learn.jpg",
+  lecture: "/images/stock-lecture.jpg",
+  volunteers: "/images/stock-volunteers.jpg",
+  volunteerGroup: "/images/stock-volunteer-boxes.jpg",
+  helping: "/images/stock-seva-packing.jpg",
+  campus: "/images/stock-campus.jpg",
+  caps: "/images/stock-classroom-students.jpg",
+  classroomKids: "/images/stock-classroom-kids.jpg",
 };
 
 export const PROGRAMS = [
